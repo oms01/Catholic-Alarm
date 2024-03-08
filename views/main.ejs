@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALARM</title>
+</head>
+<body>
+    <h1>Main</h1>
+    <form action="/on" method="get">
+        <input type="submit" value="Monitoring Start">
+      </form>
+      
+      <form action="/off" method="get">
+        <input type="submit" value="Monitoring Stop">
+      </form>
+
+      <form action="/send-push-notification" method="post">
+        <input type="submit" value="test btn">
+      </form>
+
+
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+      <script type="module" src="/config.js"></script>
+      <script type="module" src="/index.js"></script>
+</body>
+
+</html>

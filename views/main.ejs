@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALARM</title>
+    <title>CA_MAIN</title>
 </head>
 <body>
     <h1>Main</h1>
-    <form action="/on" method="get">
-        <input type="submit" value="Monitoring Start">
-      </form>
-      
-      <form action="/off" method="get">
-        <input type="submit" value="Monitoring Stop">
-      </form>
+    <br>
+    <form action="/admin" method="get">
+      <input type="submit" value="to admin">
+    </form>
+    <br>
+    <form action="/setting" method="get">
+      <input type="submit" value="alarm setting">
+    </form>
 
-      <form action="/send-push-notification" method="post">
-        <input type="submit" value="test btn">
-      </form>
-
-
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
-      <script type="module" src="/config.js"></script>
-      <script type="module" src="/index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

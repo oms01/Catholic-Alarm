@@ -2,17 +2,25 @@ const crawling = require('../util/crawling');
 
 function startCrawling(req,res){
     if(crawling.state.isMonitoring){
-        res.json({messge: 'Program is already running'});
+        console.log('Program is already running');
+        res.redirect('/admin');
         return;
     }
     crawling.state.isMonitoring = true;
     crawling.run();
-    res.json({messge: 'Program is running'});
+    console.log('Program is running');
+    res.redirect('/admin');
 }
 
 function stopCrawling(req,res){
+    if(!crawling.state.isMonitoring){
+        console.log('Program is already stoped');
+        res.redirect('/admin');
+        return;
+    }
     crawling.state.isMonitoring = false;
-    res.json({messge: 'Program stop'});
+    console.log('Program is Stoped');
+    res.redirect('/admin');
 }
 
 module.exports = {

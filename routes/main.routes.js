@@ -1,15 +1,18 @@
 const express = require('express');
 
 const router = express.Router();
-const CrawlingController = require('../controller/crawiling.controller');
 
 router.get('/',(req,res)=>{
     res.render('main');
 });
 
-router.get('/on', CrawlingController.startCrawling);
+router.get('/login',(req,res)=>{
+    res.render('login');
+})
 
-router.get('/off', CrawlingController.stopCrawling);
+router.get('/user/:id', (req,res)=>{
+
+});
 
 
 module.exports = router;

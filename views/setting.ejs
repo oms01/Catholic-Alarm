@@ -1,0 +1,34 @@
+<%-include('includes/head',{pageTitle:'User Setting Page'})%>
+<body>
+    <h2><%=userEmail%></h2>
+    <form action="<%=submitPath%>" id="form" method="POST">
+        <input type="hidden" id="token" name="token">
+        <div>
+            <input type="checkbox" name="general" <%if(general){%>checked<%}%>>
+            <label for="">일반 공지</label>
+            <input type="checkbox" name="academic" <%if(academic){%>checked<%}%>>
+            <label for="">학사 공지</label>
+            <input type="checkbox" name="scholarship" <%if(scholarship){%>checked<%}%>>
+            <label for="">장학 공지</label>
+            <input type="checkbox" name="entrepreneurship" <%if(entrepreneurship){%>checked<%}%>>
+            <label for="">취창업 공지</label>
+        </div>
+        <br>
+        <input type="submit" value="save">
+    </form>
+    <form action="/" method="get">
+        <input type="submit" value="to Main">
+    </form>
+    <form action="/push/test" method="post">
+        <input type="submit" value="push test">
+    </form>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script type="module" src="/script/index.js"></script>
+</body>
+
+</html>

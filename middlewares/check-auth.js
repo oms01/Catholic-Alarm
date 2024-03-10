@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
 
-//jwt 검증
-function checkAuthStatus(req,res,next){
+//로그인 검증
+function checkAuth(req,res,next){
     try {
         if(req.cookies.CA===undefined){
             return res.redirect('/login');
         }
         const authToken = jwt.verify(req.cookies.CA, process.env.JWT_SECRET_KEY);
-        req.decoded = authToken;
+        req.user = authToken;
         return next()
     } catch (err){
         return res.send(err.message);
     }
 }
+//관리자 검증
 function checkAdmin(req,res,next){
     try {
         if(req.cookies.CA===undefined){
@@ -29,6 +30,6 @@ function checkAdmin(req,res,next){
 }
 
 module.exports={
-    checkAuthStatus: checkAuthStatus,
+    checkAuth: checkAuth,
     checkAdmin: checkAdmin
 }

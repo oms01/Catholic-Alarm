@@ -1,15 +1,15 @@
 const express = require('express');
-
 const router = express.Router();
-const CrawlingController = require('../controller/crawiling.controller');
 
-router.get('/', (req,res)=>{
-    res.render('admin');
-})
+const AdminController = require('../controller/admin.controller');
 
-router.get('/on', CrawlingController.startCrawling);
+router.get('/', AdminController.getAdminPage);
 
-router.get('/off', CrawlingController.stopCrawling);
+router.get('/on', AdminController.startCrawling);
+
+router.get('/off', AdminController.stopCrawling);
+
+router.post('/createDummyUser', AdminController.createDummyUser);
 
 
 module.exports = router;

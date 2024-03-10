@@ -1,4 +1,5 @@
 const List = require('../models/list.model');
+const {sendAlarm} = require('./sendAlarm');
 
 const links = [
     "https://www.catholic.ac.kr/front/boardlist.do?cmsDirPkid=2053&cmsLocalPkid=1", //일반 공지
@@ -27,10 +28,10 @@ const state={
 
 async function run(){
     const list = [];
-    list.push(new List(links[0],'General'));
-    list.push(new List(links[1],'Academic'));
-    list.push(new List(links[2],'Scholarship'));
-    list.push(new List(links[3],'Entrepreneurship'));
+    list.push(new List(links[0],'general'));
+    list.push(new List(links[1],'academic'));
+    list.push(new List(links[2],'scholarship'));
+    list.push(new List(links[3],'entrepreneurship'));
     await Promise.all(list.map(item => item.data = item.getList()));
     console.log("init complete");
 
@@ -42,18 +43,15 @@ async function run(){
 }
 
 async function monitoring(list){
-    const flag = false;
     for (const item of list) {
         const tmp_data = await item.getList();
         const origin = await item.data;
         if(tmp_data[0].title != origin[0].title){
-            console.log("detected!");
             console.log(item.kind + " : " + tmp_data[0].title);
-            flag = true;
+            sendAlarm(item.kind, tmp_data[0]);
             await item.updateList(tmp_data);
         }
     }
-    if(!flag) console.log("Not detected!");
 }
 
 module.exports={

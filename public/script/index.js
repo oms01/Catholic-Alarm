@@ -9,8 +9,9 @@ firebase.initializeApp({
 const messaging = firebase.messaging()
 let tok;
 
+//서비스 워커 : 사용자가 브라우저를 꺼놓거나 다른 페이지 볼 경우 작동
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/script/firebase-messaging-sw.js')
+  navigator.serviceWorker.register('/firebase-messaging-sw.js')
     .then(function(registration) {
       console.log('Service Worker 등록 성공:', registration);
     })
@@ -19,9 +20,9 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+//토큰 생성
 messaging.requestPermission()
   .then(()=>{
-    console.log("Have Permission");
     return messaging.getToken();
   })
   .then((token)=>{
@@ -31,21 +32,27 @@ messaging.requestPermission()
   .catch((err)=>{
     console.log("Error Occured");
     console.log(err);
-  });
+});
 
+//포그라운드 메시지 setting
 messaging.onMessage((payload) => {
-  const title = payload.notification.title
+  const title = payload.data.title
   const options = {
-      body: payload.notification.body,
-      icon: payload.notification.icon
+      body: payload.data.body,
+      icon: payload.data.icon
   }
-  // console.log(payload.notification.click_action);
   console.log(title+ " : " +options.body);
   if (Notification.permission === "granted") {
-    new Notification(title, options);
+    const alarm = new Notification(title, options);
+    alarm.onclick = ()=>{
+      alarm.close();
+      const link = payload.data.click_action;
+      window.open(link);
+    };
   }
 });
 
+//토큰 갱신
 messaging.onTokenRefresh(() => {
   messaging.getToken().then((refreshedToken) => {
     console.log('Token refreshed.');
@@ -57,6 +64,7 @@ messaging.onTokenRefresh(() => {
   });
 });
 
+//백엔드로 토큰 전달
 document.getElementById('form').addEventListener('submit', function() {
   document.getElementById('token').value = tok;
 });

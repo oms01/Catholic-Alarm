@@ -2,33 +2,24 @@ const User = require('../models/user.model');
 const admin = require('firebase-admin');
 
 async function sendAlarm(kind, data){
-    const ret = await User.fetchUserWithKindEnabled(kind);
-    const link = "https://www.naver.com";
-
+    const userList = await User.fetchUserWithKindEnabled(kind);
     const message = {
-        notification: {
-            title: data.title,
-            body: data.link,
-        },
         data:{
-            click_action: link
-        },
-        webpush: {
-            fcm_options: {
-              link: data.link
-            },
+            title: kind,
+            body: data.title,
+            click_action: data.link,
+            icon: '/images/sad.jpg'
         },
         token: ''
     }
-    ret[0].forEach((cur)=>{
+    userList[0].forEach((cur)=>{
         message.token = cur.token;
-
         admin.messaging().send(message)
             .then((res)=>{
-            console.log('Successfully sent message: : ', res)
+                console.log('Successfully sent message: : ', res)
             })
             .catch((err)=>{
-                console.log('Error Sending message!!! token : ',cur.token);
+                console.log('Error Sending message!!! token : ',err);
             });
     });
 }

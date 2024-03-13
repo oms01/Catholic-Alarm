@@ -14,7 +14,13 @@ async function updateJWT(req,res){
     res.redirect('/');
 };
 
+async function logout(req,res){
+    res.clearCookie('CA');
+    res.redirect('/');
+}
+
 module.exports = {
     getLoginPage: getLoginPage,
-    updateJWT: updateJWT
+    updateJWT: updateJWT,
+    logout: logout
 }

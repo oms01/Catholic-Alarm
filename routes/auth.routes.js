@@ -10,5 +10,6 @@ router.get('/kakao',kakaoPassport.authenticate('kakao',{session:false}));
 
 router.get('/kakao/callback', kakaoPassport.authenticate('kakao',{session:false}), authController.updateJWT);
 
+router.post('/logout', authController.logout);
 
 module.exports = router;

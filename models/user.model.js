@@ -1,5 +1,5 @@
 const db = require('../data/database');
-const query = require('./user.sql');
+const query = require('../sql/user.sql');
 class User{
     constructor(email, admin=0){
         this.email = email;

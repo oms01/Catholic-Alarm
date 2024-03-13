@@ -21,6 +21,9 @@ class List{
         });
         return ret;
     };
+    updateList(list){
+        this.data = list;
+    }
     
 }
 

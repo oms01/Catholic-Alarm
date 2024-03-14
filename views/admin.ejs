@@ -1,19 +1,21 @@
-<%-include('includes/head',{pageTitle:'Admin'})%>
+<%-include('includes/head',{pageTitle:'CA - Admin'})%>
 </head>
-<body>
-    <h1>ADMIN</h1>
+<body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+  <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
+    <h1 class="p-3 text-warning">Admin</h1>
     <div>
-      <form action="/admin/on" method="get">
-          <input type="submit" value="Monitoring Start">
+      <form action="/admin/on" method="get" class="p-1">
+          <input class="btn btn-warning text-dark" type="submit" value="Monitoring Start">
       </form>
-      <form action="/admin/off" method="get">
-        <input type="submit" value="Monitoring Stop">
+      <form action="/admin/off" method="get" class="p-1">
+        <input class="btn btn-warning text-dark" type="submit" value="Monitoring Stop">
       </form>
     </div>
     <br>
     <form action="/" method="get">
-      <input type="submit" value="to Main">
+      <input class="btn btn-warning text-dark" type="submit" value="to Main">
     </form>
+  </div>
 
 </body>
 

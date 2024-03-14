@@ -1,10 +1,13 @@
-<%-include('includes/head',{pageTitle:'LoginPage'})%>
+<%-include('includes/head',{pageTitle:'CA - LoginPage'})%>
 </head>
-<body>
-  <h2>CA login</h2>
-    <form action="/login/kakao" method="get">
-      <input type="submit" value="kakao login">
-    </form>
+<body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+  <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
+    <h1 class="p-3 text-warning">Login</h1>
+    <br>
+      <form action="/login/kakao" method="get">
+        <input class="btn btn-warning text-dark" type="submit" value="Kakao Login">
+      </form>
+  </div>
 
 </body>
 

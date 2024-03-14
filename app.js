@@ -13,6 +13,8 @@ const baseRoutes = require('./routes/base.routes');
 const settingRoute = require('./routes/setting.routes');
 
 const AuthMiddlewares = require('./middlewares/check-auth');
+const notFoundMiddleware = require('./middlewares/not-found');
+const errorHandlerMiddleware = require('./middlewares/error-handler');
 
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'ejs');
@@ -29,6 +31,8 @@ app.use('/admin',AuthMiddlewares.checkAdmin, adminRoutes);
 app.use('/push', AuthMiddlewares.checkAuth, pushRoutes);
 app.use('/setting', AuthMiddlewares.checkAuth, settingRoute);
 
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 
 app.listen(3000);

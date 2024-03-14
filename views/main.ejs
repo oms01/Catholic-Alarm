@@ -1,24 +1,26 @@
-<%-include('includes/head',{pageTitle:'Main Page'})%>
+<%-include('includes/head',{pageTitle:'CA - Main Page'})%>
 </head>
-<body>
-    <h1>Main</h1>
-    <p>Welcome! "<%=userEmail%>"</p>
+<body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+  <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
+    <h1 class="p-3 text-warning">Main</h1>
+    <p class="text-warning">Welcome! "<%=userEmail%>"</p>
     <br>
     <form action="/admin" method="get">
-      <input type="submit" value="to admin">
+      <input class="btn btn-warning text-dark" type="submit" value="To Admin Page">
     </form>
     <br>
     <form action="/setting/<%=userId%>" method="get">
-      <input type="submit" value="alarm setting">
+      <input class="btn btn-warning text-dark" type="submit" value="Alarm Setting">
     </form>
     <br>
     <form action="/push/test" method="post">
-      <input type="submit" value="push test">
+      <input class="btn btn-warning text-dark" type="submit" value="Push Test">
     </form>
     <br>
     <form action="/login/logout" method="post">
-      <input type="submit" value="logout">
+      <input class="btn btn-warning text-dark" type="submit" value="Logout">
     </form>
+  </div>
 
 </body>
 

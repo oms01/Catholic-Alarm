@@ -12,11 +12,11 @@ router.get('/', AuthMiddlewares.checkAuth, function(req,res){
 })
 
 router.get('/401',function(req,res){
-    res.status(401).render('shared/401');
+    res.status(401).render('errors/401');
 })
 
 router.get('/403',function(req,res){
-    res.status(403).render('shared/403');
+    res.status(403).render('errors/403');
 })
 
 module.exports = router;

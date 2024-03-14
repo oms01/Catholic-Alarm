@@ -1,24 +1,38 @@
-<%-include('includes/head',{pageTitle:'User Setting Page'})%>
-<body>
-    <h2><%=userEmail%></h2>
-    <form action="<%=submitPath%>" id="form" method="POST">
-        <input type="hidden" id="token" name="token">
-        <div>
-            <input type="checkbox" name="general" <%if(general){%>checked<%}%>>
-            <label for="">일반 공지</label>
-            <input type="checkbox" name="academic" <%if(academic){%>checked<%}%>>
-            <label for="">학사 공지</label>
-            <input type="checkbox" name="scholarship" <%if(scholarship){%>checked<%}%>>
-            <label for="">장학 공지</label>
-            <input type="checkbox" name="entrepreneurship" <%if(entrepreneurship){%>checked<%}%>>
-            <label for="">취창업 공지</label>
-        </div>
+<%-include('includes/head',{pageTitle:'CA - User Setting Page'})%>
+<body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+    <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
+        <h2 class="p-3 text-warning">Alarm Setting</h2>
+        <p class="text-warning"><%=userEmail%></p>
+        
+        <form class="d-flex align-items-center flex-column p-1" action="<%=submitPath%>" id="form" method="POST">
+
+            <input type="hidden" id="token" name="token">
+
+            <label for="general" class="text-warning p-1">
+                <input type="checkbox" id="general" name="general" <%if(general){%>checked<%}%>>
+                일반 공지
+            </label>
+            <label for="academic" class="text-warning p-1">
+                <input type="checkbox" id="academic" name="academic" <%if(academic){%>checked<%}%>>
+                학사 공지
+            </label>
+            <label for="scholarship" class="text-warning p-1">
+                <input type="checkbox" id="scholarship" name="scholarship" <%if(scholarship){%>checked<%}%>>
+                장학 공지
+            </label>
+            <label for="entrepreneurship" class="text-warning p-1">
+                <input type="checkbox" id="entrepreneurship" name="entrepreneurship" <%if(entrepreneurship){%>checked<%}%>>
+                취창업 공지
+            </label>
+
+            <input type="submit" value="save" class="btn btn-warning">
+        </form>
+
         <br>
-        <input type="submit" value="save">
-    </form>
-    <form action="/" method="get">
-        <input type="submit" value="to Main">
-    </form>
+        <form action="/" method="get">
+            <input type="submit" class="btn btn-warning" value="to Main">
+        </form>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>

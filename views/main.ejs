@@ -13,14 +13,20 @@
       <input class="btn btn-warning text-dark" type="submit" value="Alarm Setting">
     </form>
     <br>
-    <form action="/push/test" method="post">
-      <input class="btn btn-warning text-dark" type="submit" value="Push Test">
-    </form>
-    <br>
     <form action="/login/logout" method="post">
       <input class="btn btn-warning text-dark" type="submit" value="Logout">
     </form>
   </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+  <script type="module" src="/script/setServiceWorker.js"></script>
+  <script type="module" src="/script/monitorMessage.js"></script>
+  <script type="module" src="/script/requestNotification.js"></script>
 
 </body>
 

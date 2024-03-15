@@ -1,4 +1,5 @@
 const crawling = require('../util/crawling');
+const send = require('../util/sendAlarm');
 
 function getAdminPage(req,res){
     res.render('admin');
@@ -37,9 +38,19 @@ async function createDummyUser(req,res){
     });
 }
 
+function pushTest(req,res){
+    const data = {
+        link: "https://www.naver.com",
+        title: "test-title",
+    }
+    send.sendAlarm('general', data);
+    res.redirect('/admin');
+}
+
 module.exports = {
     getAdminPage: getAdminPage,
     startCrawling: startCrawling,
     stopCrawling: stopCrawling,
-    createDummyUser: createDummyUser
+    createDummyUser: createDummyUser,
+    pushTest: pushTest
 }

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const createSessionConfig = require('./config/session');
 
-const pushRoutes = require('./routes/push.routes');
+// const pushRoutes = require('./routes/push.routes');
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -28,11 +28,13 @@ app.use(cookieParser());
 app.use('/', baseRoutes);
 app.use('/login', authRoutes);
 app.use('/admin',AuthMiddlewares.checkAdmin, adminRoutes);
-app.use('/push', AuthMiddlewares.checkAuth, pushRoutes);
+// app.use('/push', AuthMiddlewares.checkAuth, pushRoutes);
 app.use('/setting', AuthMiddlewares.checkAuth, settingRoute);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log("Server is runnign at port : " + 3000);
+});

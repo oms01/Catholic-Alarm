@@ -3,20 +3,28 @@
 <body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
   <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
     <h1 class="p-3 text-warning">Admin</h1>
-    <div>
-      <form action="/admin/on" method="get" class="p-1">
-          <input class="btn btn-warning text-dark" type="submit" value="Monitoring Start">
-      </form>
-      <form action="/admin/off" method="get" class="p-1">
-        <input class="btn btn-warning text-dark" type="submit" value="Monitoring Stop">
-      </form>
-    </div>
+    <form action="/admin/on" method="get" class="p-1">
+        <input class="btn btn-warning text-dark" type="submit" value="Monitoring Start">
+    </form>
+    <form action="/admin/off" method="get" class="p-1">
+      <input class="btn btn-warning text-dark" type="submit" value="Monitoring Stop">
+    </form>
+    <br>
+    <form action="/admin/test" method="post">
+      <input class="btn btn-warning text-dark" type="submit" value="Push Test">
+    </form>
     <br>
     <form action="/" method="get">
       <input class="btn btn-warning text-dark" type="submit" value="to Main">
     </form>
   </div>
 
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script type="module" src="/script/monitorMessage.js"></script>
 </body>
 
 </html>

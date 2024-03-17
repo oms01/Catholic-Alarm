@@ -49,7 +49,7 @@ async function monitoring(list){
         if(tmp_data[0].title != origin[0].title){
             console.log(item.kind + " : " + tmp_data[0].title);
             //종류 , {제목,링크} 전달
-            sendAlarm(item.kind, tmp_data[0]);
+            sendAlarmToAll(item.kind, tmp_data[0]);
             await item.updateList(tmp_data);
         }
     }

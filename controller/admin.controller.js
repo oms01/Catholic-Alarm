@@ -43,7 +43,7 @@ function pushTest(req,res){
         link: "https://www.naver.com",
         title: "test-title",
     }
-    send.sendAlarm('general', data);
+    send.sendAlarmToAll('general', data);
     res.redirect('/admin');
 }
 

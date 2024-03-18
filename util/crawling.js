@@ -36,7 +36,7 @@ async function run(){
     console.log("init complete");
 
     while(state.isMonitoring){
-        console.log(`${getDate()} : waiting...`);
+        // console.log(`${getDate()} : waiting...`);
         await new Promise(resolve => setTimeout(resolve, 5 * 1000));
         await monitoring(list);
     }

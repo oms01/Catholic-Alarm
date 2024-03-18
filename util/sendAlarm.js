@@ -17,7 +17,7 @@ async function sendAlarmToAll(kind, data){
         data:{
             title: kind,
             body: data.title,
-            click_action: data.link,
+            click_action: "https://" + data.link,
             icon: '/images/logo.jpg'
         },
         token: ''

@@ -2,7 +2,8 @@
 </head>
 <body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
   <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
-    <h1 class="p-3 text-warning">Main</h1>
+    <h1 class="p-3 text-warning m-0">Catholic Alarm</h1>
+    <h3 class="p-3 text-warning">Main</h3>
     <p class="text-warning">Welcome! "<%=userEmail%>"</p>
     <br>
     <form action="/admin" method="get">
@@ -16,18 +17,14 @@
     <form action="/login/logout" method="post">
       <input class="btn btn-warning text-dark" type="submit" value="Logout">
     </form>
+    <br>
+    <a class="link-success link-offset-2 link-underline link-underline-opacity-0" href="/manual">
+      How To Use
+    </a>
+
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
   <script type="module" src="/script/setServiceWorker.js"></script>
-  <script type="module" src="/script/monitorMessage.js"></script>
   <script type="module" src="/script/requestNotification.js"></script>
-
-</body>
-
-</html>
+<%-include('includes/foot')%>

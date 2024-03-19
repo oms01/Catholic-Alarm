@@ -46,9 +46,7 @@ async function monitoring(list){
         const tmp_data = await item.getList();
         const origin = await item.data;
         if(tmp_data[0].title != origin[0].title){
-            console.log(item.kind + " : " + tmp_data[0].title);
-            //종류 , {제목,링크} 전달
-            console.log("link : "+tmp_data[0].link);
+            console.log(`[${getDate()}] ${item.kind} : ${tmp_data[0].title}`);
             sendAlarmToAll(item.kind, tmp_data[0]);
             await item.updateList(tmp_data);
         }

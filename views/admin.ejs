@@ -3,6 +3,13 @@
 <body class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
   <div class="d-flex align-items-center flex-column border border-warning p-5 rounded-4 bg-dark">
     <h1 class="p-3 text-warning">Admin</h1>
+    <p class="p-3 text-warning">
+      <%if(state){
+        %>Program is running
+      <%}else{
+        %>Program is stopped
+      <%}%>
+    </p>
     <form action="/admin/on" method="get" class="p-1">
         <input class="btn btn-warning text-dark" type="submit" value="Monitoring Start">
     </form>

@@ -36,7 +36,6 @@ async function run(){
     console.log("init complete");
 
     while(state.isMonitoring){
-        // console.log(`${getDate()} : waiting...`);
         await new Promise(resolve => setTimeout(resolve, 5 * 1000));
         await monitoring(list);
     }
@@ -49,7 +48,7 @@ async function monitoring(list){
         if(tmp_data[0].title != origin[0].title){
             console.log(item.kind + " : " + tmp_data[0].title);
             //종류 , {제목,링크} 전달
-            console.log(tmp_data[0].link);
+            console.log("link : "+tmp_data[0].link);
             sendAlarmToAll(item.kind, tmp_data[0]);
             await item.updateList(tmp_data);
         }

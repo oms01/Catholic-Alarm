@@ -2,7 +2,9 @@ const crawling = require('../util/crawling');
 const send = require('../util/sendAlarm');
 
 function getAdminPage(req,res){
-    res.render('admin');
+    res.render('admin', {
+        state : crawling.state.isMonitoring
+    });
 }
 
 function startCrawling(req,res){

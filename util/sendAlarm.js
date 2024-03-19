@@ -13,9 +13,15 @@ async function sendAlarm(token, message){
 
 async function sendAlarmToAll(kind, data){
     const userList = await User.fetchUserWithKindEnabled(kind);
+    let title='';
+    if(kind=='general') title = "일반 공지";
+    else if(kind=='academic') title = "학사 공지";
+    else if(kind=='scholarship') title = "장학 공지";
+    else if(kind=='entrepreneurship') title = "취창업 공지";
+    
     const message = {
         data:{
-            title: kind,
+            title: title,
             body: data.title,
             click_action: "https://" + data.link,
             icon: '/images/logo.jpg'

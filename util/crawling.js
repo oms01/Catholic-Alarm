@@ -1,5 +1,6 @@
 const List = require('../models/list.model');
 const {sendAlarmToAll} = require('./sendAlarm');
+const {saveLog} = require('./log');
 
 const links = [
     "https://www.catholic.ac.kr/front/boardlist.do?cmsDirPkid=2053&cmsLocalPkid=1", //일반 공지
@@ -48,6 +49,12 @@ async function monitoring(list){
         if(tmp_data[0].title != origin[0].title){
             console.log(`[${getDate()}] ${item.kind} : ${tmp_data[0].title}`);
             sendAlarmToAll(item.kind, tmp_data[0]);
+            const data = {
+                kind: item.kind,
+                title: tmp_data[0].title,
+                link: tmp_data[0].link
+            }
+            saveLog(data);
             await item.updateList(tmp_data);
         }
     }

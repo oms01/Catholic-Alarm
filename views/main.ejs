@@ -6,21 +6,32 @@
     <h3 class="p-3 text-warning">Main</h3>
     <p class="text-warning">Welcome! "<%=userEmail%>"</p>
     <br>
-    <form action="/admin" method="get">
-      <input class="btn btn-warning text-dark" type="submit" value="To Admin Page">
-    </form>
-    <br>
-    <form action="/setting/<%=userId%>" method="get">
-      <input class="btn btn-warning text-dark" type="submit" value="Alarm Setting">
-    </form>
-    <br>
-    <form action="/login/logout" method="post">
-      <input class="btn btn-warning text-dark" type="submit" value="Logout">
-    </form>
+    <div class="d-flex">
+      <form action="/admin" method="get" class="me-3">
+        <input class="btn btn-warning text-dark" type="submit" value="To Admin Page">
+      </form>
+      <br>
+      <form action="/setting/<%=userId%>" method="get" class="me-3">
+        <input class="btn btn-warning text-dark" type="submit" value="Alarm Setting">
+      </form>
+      <br>
+      <form action="/login/logout" method="post" class="me-3">
+        <input class="btn btn-warning text-dark" type="submit" value="Logout">
+      </form>
+    </div>
     <br>
     <a class="link-success link-offset-2 link-underline link-underline-opacity-0" href="/manual">
       How To Use
-    </a>
+    </a>    
+    <hr class="text-warning" style="width: 110%; border: solid 1px">
+    <br>
+    <p class="text-warning">가톨릭대학교 공지사항</p>
+    <div class="d-flex justify-content-left flex-column">
+      <%for(const content of contents){%>
+      <a class="link-warning link-offset-2 link-underline link-underline-opacity-0" href="<%=content.link%>">[<%=content.kind%>] <%=content.title%></a>
+      <%}%>
+    </div>
+
 
   </div>
 

@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const createSessionConfig = require('./config/session');
+const helmetConfig = require('./config/helmetConfig');
 
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
@@ -18,6 +20,8 @@ const errorHandlerMiddleware = require('./middlewares/error-handler');
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'ejs');
 
+app.use(helmet(helmetConfig));
+  
 app.use(expressSession(createSessionConfig()));
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
@@ -34,5 +38,5 @@ app.use(errorHandlerMiddleware);
 
 
 app.listen(3000,()=>{
-    console.log("Server is runnign at port : " + 3000);
+    console.log("Server is running at port : " + 3000);
 });

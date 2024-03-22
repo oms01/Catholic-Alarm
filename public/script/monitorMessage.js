@@ -8,7 +8,7 @@ messaging.onMessage((payload) => {
         body: payload.data.body,
         icon: payload.data.icon
     }
-    console.log(title+ " : " +options.body);
+    // console.log(title+ " : " +options.body);
     if (Notification.permission === "granted") {
         const alarm = new Notification(title, options);
         alarm.onclick = ()=>{

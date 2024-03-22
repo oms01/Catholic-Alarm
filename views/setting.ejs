@@ -24,10 +24,14 @@
                 <input type="checkbox" id="entrepreneurship" name="entrepreneurship" <%if(entrepreneurship){%>checked<%}%>>
                 취창업 공지
             </label>
-
+            
             <input type="submit" value="save" class="btn btn-warning">
         </form>
-
+        <br>
+        <form action="<%=submitPath%>/sendAlarm" method="post">
+            <input type="hidden" id="token" name="token">
+            <input type="submit" class="btn btn-warning" value="push test">
+        </form>
         <br>
         <form action="/" method="get">
             <input type="submit" class="btn btn-warning" value="to Main">

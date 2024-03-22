@@ -18,6 +18,11 @@ messaging.requestPermission()
 
     
 //백엔드로 토큰 전달
-document.getElementById('form').addEventListener('submit', ()=>{
-    document.getElementById('token').value = tok;
+// document.getElementById('form').addEventListener('submit', ()=>{
+//     document.getElementById('token').value = tok;
+// });
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+        form.querySelector('#token').value = tok;
+    });
 });

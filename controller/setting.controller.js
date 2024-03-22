@@ -30,11 +30,25 @@ async function updateUserSetting(req,res){
         token: ''
     }
     send.sendAlarm(req.body.token, message);
-
     res.redirect('/');
+}
+
+async function sendTestAlarm(req,res){
+    const message = {
+        data:{
+            title: '테스트 알림입니다.',
+            body: 'test',
+            click_action: '',
+            icon: '/images/logo.jpg'
+        },
+        token: ''
+    }
+    send.sendAlarm(req.body.token, message);
+    res.redirect('/setting/'+req.user.id);
 }
 
 module.exports = {
     getUserPage: getUserPage,
-    updateUserSetting: updateUserSetting
+    updateUserSetting: updateUserSetting,
+    sendTestAlarm: sendTestAlarm
 }

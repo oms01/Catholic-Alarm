@@ -2,7 +2,12 @@ const User = require('../models/user.model');
 const send = require('../util/sendAlarm');
 
 async function getUserPage(req,res){
-    const user = await User.getSetting(req.user.id);
+    let user;
+    try{
+        user = await User.getSetting(req.user.id);
+    } catch(err){
+        return res.redirect('400',{errorMessage: "DataBase Access Fail"});
+    }
     res.render('setting',{
         userEmail: req.user.email,
         submitPath: '/setting/'+ req.user.id,
@@ -18,7 +23,11 @@ async function updateUserSetting(req,res){
     const academic = req.body.academic=='on' || 0;
     const scholarship = req.body.scholarship=='on' || 0;
     const entrepreneurship = req.body.entrepreneurship=='on' || 0;
-    await User.updateSetting(req.user.id, req.body.token, general, academic, scholarship, entrepreneurship);
+    try{
+        await User.updateSetting(req.user.id, req.body.token, general, academic, scholarship, entrepreneurship);
+    } catch(err){
+        return res.redirect('400',{errorMessage: "DataBase Access Fail"});
+    }
 
     const message = {
         data:{
@@ -29,21 +38,29 @@ async function updateUserSetting(req,res){
         },
         token: ''
     }
-    send.sendAlarm(req.body.token, message);
+    try{
+        send.sendAlarm(req.body.token, message);
+    } catch(err){
+        return res.redirect('400',{errorMessage: "Message Sending Fail"});
+    }
     res.redirect('/');
 }
 
 async function sendTestAlarm(req,res){
-    const message = {
-        data:{
-            title: '테스트 알림입니다.',
-            body: 'test',
-            click_action: '',
-            icon: '/images/logo.jpg'
-        },
-        token: ''
+    try{
+        const message = {
+            data:{
+                title: '테스트 알림입니다.',
+                body: 'test',
+                click_action: '',
+                icon: '/images/logo.jpg'
+            },
+            token: ''
+        }
+        send.sendAlarm(req.body.token, message);
+    } catch(err){
+        return res.redirect('400', {errorMessage: "Message Sending Fail"});
     }
-    send.sendAlarm(req.body.token, message);
     res.redirect('/setting/'+req.user.id);
 }
 

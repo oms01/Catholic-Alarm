@@ -1,12 +1,7 @@
 [
-    {
-        "kind": "테스트",
-        "title": "테스트 제목",
-        "link": "https://naver.com"
-    },
-    {
-        "kind": "테스트",
-        "title": "테스트 제목",
-        "link": "https://naver.com"
-    }
+  {
+    "kind": "테스트",
+    "title": "테스트 제목",
+    "link": "https://naver.com"
+  }
 ]

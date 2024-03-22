@@ -1,5 +1,6 @@
 const crawling = require('../util/crawling');
 const send = require('../util/sendAlarm');
+const {getLog, saveLog} = require('../util/log');
 
 function getAdminPage(req,res){
     res.render('admin', {
@@ -40,12 +41,13 @@ async function createDummyUser(req,res){
     });
 }
 
-function pushTest(req,res){
-    const data = {
-        link: "https://www.naver.com",
-        title: "test-title",
-    }
-    send.sendAlarmToAll('general', data);
+async function test(req,res){
+    const content = await getLog();
+    saveLog({
+        title: content.length
+    });
+    const ret = await getLog();
+    console.log(ret);
     res.redirect('/admin');
 }
 
@@ -54,5 +56,5 @@ module.exports = {
     startCrawling: startCrawling,
     stopCrawling: stopCrawling,
     createDummyUser: createDummyUser,
-    pushTest: pushTest
+    test: test
 }

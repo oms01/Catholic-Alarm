@@ -7,9 +7,11 @@
     <p class="text-warning">Welcome! "<%=userEmail%>"</p>
     <br>
     <div class="d-flex">
+      <%if(admin){%>
       <form action="/admin" method="get" class="me-3">
         <input class="btn btn-warning text-dark" type="submit" value="To Admin Page">
       </form>
+      <%}%>
       <br>
       <form action="/setting/<%=userId%>" method="get" class="me-3">
         <input class="btn btn-warning text-dark" type="submit" value="Alarm Setting">

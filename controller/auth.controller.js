@@ -5,13 +5,17 @@ function getLoginPage(req,res){
 }
 
 async function updateJWT(req,res){
-    const userData = {
-        id : req.user.id,
-        email : req.user.email,
-        admin : req.user.admin
-    };
-    res.cookie("CA", jwt.sign(userData,process.env.JWT_SECRET_KEY));
-    res.redirect('/');
+    try{
+        const userData = {
+            id : req.user.id,
+            email : req.user.email,
+            admin : req.user.admin
+        };
+        res.cookie("CA", jwt.sign(userData,process.env.JWT_SECRET_KEY));
+        res.redirect('/');
+    } catch(err){
+        return res.redirect('/400', {errorMessage: "JWT Error"});
+    }
 };
 
 async function logout(req,res){

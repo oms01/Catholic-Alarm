@@ -10,7 +10,7 @@ function checkAuth(req,res,next){
         req.user = authToken;
         return next()
     } catch (err){
-        return res.status(401).render('errors/401');
+        return res.redirect('/401');
     }
 }
 //관리자 검증
@@ -21,11 +21,11 @@ function checkAdmin(req,res,next){
         }
         const authToken = jwt.verify(req.cookies.CA, process.env.JWT_SECRET_KEY);
         if(!authToken.admin){
-            return res.status(401).render('errors/401');
+            return res.redirect('/401');
         }
         return next()
     } catch (err){
-        return res.status(404).render('errors/404');
+        return res.redirect('/404');
     }
 }
 

@@ -10,14 +10,15 @@ async function getLog(){
 }
 
 async function saveLog(data){
-    const content = getLog();
+    const content = await getLog();
     if(content.length > 8) deleteOld();
-    
+    content.push(data);
     fs.writeFileSync(logPath, JSON.stringify(content, null, 2));
 }
 
 async function deleteOld(){
-    const content = getLog().shift();
+    const content = await getLog();
+    content.shift();
     fs.writeFileSync(logPath, JSON.stringify(content, null, 2));
 }
 

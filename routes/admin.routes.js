@@ -17,6 +17,7 @@ router.get('/off', AdminController.stopCrawling);
 
 router.post('/createDummyUser', AdminController.createDummyUser);
   
-router.post("/test", AdminController.pushTest);
+router.post("/test", AdminController.test);
+
 
 module.exports = router;

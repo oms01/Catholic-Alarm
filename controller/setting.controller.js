@@ -23,6 +23,9 @@ async function updateUserSetting(req,res){
     const academic = req.body.academic=='on' || 0;
     const scholarship = req.body.scholarship=='on' || 0;
     const entrepreneurship = req.body.entrepreneurship=='on' || 0;
+    if(req.body.token==undefined){
+        return res.redirect('400',{errorMessage:"Token Issuance Error"});
+    }
     try{
         await User.updateSetting(req.user.id, req.body.token, general, academic, scholarship, entrepreneurship);
     } catch(err){

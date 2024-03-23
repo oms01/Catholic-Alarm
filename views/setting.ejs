@@ -25,12 +25,12 @@
                 취창업 공지
             </label>
             
-            <input type="submit" value="save" class="btn btn-warning">
+            <input type="submit" value="save" class="btn btn-warning" id="btn" disabled>
         </form>
         <br>
         <form action="<%=submitPath%>/sendAlarm" method="post">
             <input type="hidden" id="token" name="token">
-            <input type="submit" class="btn btn-warning" value="push test">
+            <input type="submit" class="btn btn-warning" value="push test" disabled>
         </form>
         <br>
         <form action="/" method="get">

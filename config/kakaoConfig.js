@@ -20,6 +20,7 @@ passport.use('kakao', new KakaoStrategy(
                 id = user.id;
                 admin = user.admin;
             }
+            console.log("User Login : " + email);
             done(null, {email: email, id: id, admin: admin});
         }catch(error){
             console.log(error);

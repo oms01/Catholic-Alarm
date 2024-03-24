@@ -7,7 +7,7 @@ messaging.requestPermission()
         return messaging.getToken();
     })
     .then((token)=>{
-        console.log(token);
+        // console.log(token);
         document.querySelectorAll('form input#token').forEach((elem)=>{
             elem.value = token;
         });

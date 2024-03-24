@@ -23,8 +23,7 @@ async function updateUserSetting(req,res){
     const academic = req.body.academic=='on' || 0;
     const scholarship = req.body.scholarship=='on' || 0;
     const entrepreneurship = req.body.entrepreneurship=='on' || 0;
-    console.log(req.body.token);
-    if(req.body.token==''){
+    if(req.body.token===''){
         return res.redirect('400',{errorMessage:"Token Issuance Error"});
     }
     try{

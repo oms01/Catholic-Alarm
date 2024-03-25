@@ -25,7 +25,8 @@ const helmetConfig = {
                 "'self'", 
                 "https://fcmregistrations.googleapis.com/*", 
                 "https://firebaseinstallations.googleapis.com/*",
-                "https://fcmregistrations.googleapis.com/*"
+                "https://fcmregistrations.googleapis.com/*",
+                "https://fcmregistrations.googleapis.com/v1/projects/attention-b4db3/registrations/e7rSCMEuHxaPeSneUnPb34:APA91bGiex14-K-bme9Ag5IW-i8VlqfqKellU4qTBRSKibaaC43QBcWXtZfKeaasOgE3LAZlA-zi4eFNfYkyU2pEXhvIhl0VxIRjVn0Ow3hEeeYYaPYMuf8lkXhfBHXoyk1qRk8bTOM6",
             ],
             objectSrc: ["'none'"],
             'form-action': ["*"],

@@ -21,6 +21,12 @@ const helmetConfig = {
                 "https://firebaseinstallations.googleapis.com/*", 
                 "https://fcmregistrations.googleapis.com/*"
             ],
+            connectSrc: [
+                "'self'", 
+                "https://fcmregistrations.googleapis.com/*", 
+                "https://firebaseinstallations.googleapis.com/*",
+                "https://fcmregistrations.googleapis.com/*"
+            ],
             objectSrc: ["'none'"],
             'form-action': ["*"],
             upgradeInsecureRequests: [],

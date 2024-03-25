@@ -47,15 +47,15 @@ async function monitoring(list){
         const tmp_data = await item.getList();
         const origin = await item.data;
         if(tmp_data[0].title != origin[0].title){
+            console.log(`[${getDate()}] ${item.kind} : ${tmp_data[0].title}`);
+            sendAlarmToAll(item.kind, tmp_data[0]);
 
             let title='';
-            if(item.kind=='general') title = "일반 공지";
-            else if(item.kind=='academic') title = "학사 공지";
-            else if(item.kind=='scholarship') title = "장학 공지";
-            else if(item.kind=='entrepreneurship') title = "취창업 공지";
+            if(kind=='general') title = "일반 공지";
+            else if(kind=='academic') title = "학사 공지";
+            else if(kind=='scholarship') title = "장학 공지";
+            else if(kind=='entrepreneurship') title = "취창업 공지";
 
-            console.log(`[${getDate()}] ${title} : ${tmp_data[0].title}`);
-            sendAlarmToAll(title, tmp_data[0]);
             const data = {
                 kind: title,
                 title: tmp_data[0].title,

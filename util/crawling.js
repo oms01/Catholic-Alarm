@@ -51,10 +51,10 @@ async function monitoring(list){
             sendAlarmToAll(item.kind, tmp_data[0]);
 
             let title='';
-            if(kind=='general') title = "일반 공지";
-            else if(kind=='academic') title = "학사 공지";
-            else if(kind=='scholarship') title = "장학 공지";
-            else if(kind=='entrepreneurship') title = "취창업 공지";
+            if(item.kind=='general') title = "일반 공지";
+            else if(item.kind=='academic') title = "학사 공지";
+            else if(item.kind=='scholarship') title = "장학 공지";
+            else if(item.kind=='entrepreneurship') title = "취창업 공지";
 
             const data = {
                 kind: title,

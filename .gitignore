@@ -3,3 +3,4 @@ node_modules
 .firebase-admin.json
 firebaseBaseConfig.js
 images
+log.json

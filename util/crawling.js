@@ -52,7 +52,7 @@ async function monitoring(list){
             const data = {
                 kind: item.kind,
                 title: tmp_data[0].title,
-                link: tmp_data[0].link
+                link: 'https://'+tmp_data[0].link
             }
             saveLog(data);
             await item.updateList(tmp_data);
